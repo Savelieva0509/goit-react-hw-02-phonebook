@@ -1,14 +1,20 @@
 import PropTypes from 'prop-types';
+import css from './Filter.module.css';
 
 const Filter = ({ value, onChange }) => (
-  <label>
-    Find contact by name
+  <div className= {css.filter}>
+    <label for="user-text" className={css.filter__label}>
+      Find contact by name
+    </label>
+    
     <input
+      className= {css.filter__input}
       type="text"
       value = {value}
       onChange={onChange}
+      name = "user-text"
     />
-  </label>
+  </div>
 );
 
 export default Filter;
