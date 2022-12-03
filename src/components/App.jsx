@@ -21,13 +21,20 @@ export class App extends Component {
     }))
   
   }
-  
 
   addContact = ({name,number}) => {
       const contact = {
         id: shortid.generate(),
         name,
         number,
+    }
+
+     if (
+      this.state.contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      return alert(`${name} is already in contacts`);
     }
 
     this.setState(prevState => ({
