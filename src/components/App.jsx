@@ -42,18 +42,21 @@ export class App extends Component {
   }
   
   getVisibleContact = () => {
-    const normalizedFilter = this.state.filter.toLocaleLowerCase();
-    return this.state.contacts.filter(contact => contact.text.includes(normalizedFilter));
-  }
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
-  render() {
-    // const visibleContacts = this.getVisibleContact();
+    render() {
+    const visibleContacts = this.getVisibleContact();
 
     return (
     <div>
         <ContactForm onSubmit={this.addContact} />
         <Filter onChange={this.changeFilter} value={this.state.filter} />
-        <ContactList contacts = {this.state.contacts} />
+        <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact } />
     </div>
   );
   }
