@@ -26,6 +26,19 @@ class ContactForm extends Component {
         this.reset();
     }
     
+    // handleSubmit = event => {
+    //     event.preventDefault();
+    //     const { value } = event.currentTarget.name;
+    //     const { contacts, onSubmit } = this.props;
+
+    //     if (
+    //         contacts.find(elem => elem.name.toLowerCase() !== value.toLowerCase())
+    //     ) {
+    //         this.reset();
+    //         onSubmit(this.state);
+    //     }
+    // }
+
     reset = () => {
         this.setState({ name: "", number: ""})
     }
