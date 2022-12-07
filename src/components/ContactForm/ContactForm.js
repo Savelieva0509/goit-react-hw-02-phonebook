@@ -19,25 +19,26 @@ class ContactForm extends Component {
     });
   };
 
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   this.props.onSubmit(this.state);
+
+  //   this.reset();
+  // };
+
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
+    const { value } = event.currentTarget.name;
+    const { contacts, onSubmit } = this.props;
 
+    if (
+      contacts.find(elem => elem.name.toLowerCase() === value.toLowerCase())
+    ) {
+      return alert(`${value} is already in contacts`);
+    }
     this.reset();
+    onSubmit(this.state);
   };
-
-  // handleSubmit = event => {
-  //     event.preventDefault();
-  //     const { value } = event.currentTarget.name;
-  //     const { contacts, onSubmit } = this.props;
-
-  //     if (
-  //         contacts.find(elem => elem.name.toLowerCase() !== value.toLowerCase())
-  //     ) {
-  //         this.reset();
-  //         onSubmit(this.state);
-  //     }
-  // }
 
   reset = () => {
     this.setState({ name: '', number: '' });
