@@ -19,13 +19,6 @@ class ContactForm extends Component {
     });
   };
 
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   this.props.onSubmit(this.state);
-
-  //   this.reset();
-  // };
-
   handleSubmit = event => {
     event.preventDefault();
     const { value } = event.currentTarget.name;
